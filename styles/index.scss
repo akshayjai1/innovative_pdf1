@@ -1,0 +1,98 @@
+.page {
+  border: 1px solid black;
+  padding: 40px;
+  margin: 20px;
+  .header {
+    text-align: center;
+    img {
+      width: 600px;
+    }
+  }
+  .starter {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin: 20px 0;
+    .recepient {
+      display: inline-block;
+      padding-left: 20px;
+    }
+    .invoiceMetaDetail {
+      display: inline-block;
+      vertical-align: top;
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        border-color: rbg(228, 228, 228);
+        border: none;
+        td {
+          padding: 5px;
+        }
+      }
+    }
+  }
+  .invoiceTable {
+    display: grid;
+    border: 1px solid;
+    border-bottom: none;
+    > div {
+      border-bottom: 1px solid;
+      padding: 1em 2px;
+      text-align: center;
+      font-size: 1em;
+    }  
+  }
+  .transportInvoiceItems {
+    grid-template-columns: 11% 12% 10% 16% 9% 9% 12% 9% 12%;
+    margin-top: 30px;
+    
+    .heading {
+      font-weight: bold;
+      border-right: 1px solid;
+    }
+  }
+  .transportInvoiceTotal {
+    grid-template-columns: 78% 10% 12%;
+    border-top: none;
+    > div {
+      text-align: right;
+      padding-right: 2em;
+    }
+    .leftAlign {
+      text-align: left;
+    }
+    .rightBorder {
+      border-right: 1px solid;
+    }
+  }
+  .transportInvoiceTotalFinal {
+    grid-template-columns: 82% 5% 13%;
+    border-top: none;
+    font-weight: bold;
+    font-size: 1.5em;
+    > div {
+      text-align: right;
+      padding-right: 1em;
+    }
+    .rightAlign {
+      text-align: right;
+      padding-right: 1em;
+    }
+  }
+  .remarks {
+    margin: 30px 0;
+  }
+  .rupeesInWords {
+    margin: 30px 0;
+  }
+  .gst {
+    margin: 30px 0;
+  }
+  .logisticSignature {
+    text-align: right;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}
