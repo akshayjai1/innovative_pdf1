@@ -53,11 +53,10 @@ html {
             border-bottom: 1px solid #aaa;
             page-break-inside: avoid !important;
             > div {
-              padding: 1em 2px;
+              padding: 1em 4px;
               text-align: center;
               font-size: 1em;
               overflow-wrap: break-word;
-              display: inline-grid;
             }  
           }
           .transportInvoiceItems {
@@ -71,8 +70,9 @@ html {
             }
           }
           .transportInvoiceTotal {
-            grid-template-columns: 78% 10% 12%;
+            grid-template-columns: auto 120px 150px;
             border-top: none;
+            
             > div {
               text-align: right;
               padding-right: 2em;
@@ -85,7 +85,7 @@ html {
             }
           }
           .transportInvoiceTotalFinal {
-            grid-template-columns: 82% 5% 13%;
+            grid-template-columns: auto 120px 150px;
             border-top: none;
             font-weight: bold;
             font-size: 1.5em;
@@ -98,7 +98,6 @@ html {
               padding-right: 1em;
             }
           }
-
         }
         .remarks {
           margin: 30px 0;
