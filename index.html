@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body>
+    <div class="controls">
+      <button onclick="window.print()">Print PDF</button>
+      <button onclick="printLandscape()">Print in Landscape</button>
+    </div>
     <div class="page">
       <div class="header">
         <img src="./images/logo.png" alt="Transport Logo" />
@@ -303,11 +307,13 @@
         <b>FOR- SHREE TEMPO SERVICE</b>
       </div>
       <div class="gst">
-          <b>GST:</b> GSTAT1312309131 <b>PAN:</b> AJBADFA091
+          <b>GST:</b> GSTAT1312309131
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <b>PAN:</b> AJBADFA091
       </div>
       <div class="footer">
         <div class="gstDetail">
-          <b>GST</b> @:&nbsp;&nbsp;&nbsp;&nbsp;5%
+          <b>GST</b> @:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5%
           <br />
           <b>CGST</b> @:&nbsp;&nbsp;&nbsp;5%
           <br />
@@ -319,4 +325,5 @@
     </div>
 
   </body>
+  <script type="text/javascript" src="./index.js" ></script>
 </html>

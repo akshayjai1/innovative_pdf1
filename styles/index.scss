@@ -1,5 +1,5 @@
 .page {
-  border: 1px solid black;
+  border: 1px solid #aaa black;
   padding: 40px;
   margin: 20px;
   .header {
@@ -33,10 +33,10 @@
   }
   .invoiceTable {
     display: grid;
-    border: 1px solid;
+    border: 1px solid #aaa;
     border-bottom: none;
     > div {
-      border-bottom: 1px solid;
+      border-bottom: 1px solid #aaa;
       padding: 1em 2px;
       text-align: center;
       font-size: 1em;
@@ -48,7 +48,7 @@
     
     .heading {
       font-weight: bold;
-      border-right: 1px solid;
+      border-right: 1px solid #aaa;
     }
   }
   .transportInvoiceTotal {
@@ -62,7 +62,7 @@
       text-align: left;
     }
     .rightBorder {
-      border-right: 1px solid;
+      border-right: 1px solid #aaa;
     }
   }
   .transportInvoiceTotalFinal {
@@ -94,5 +94,16 @@
   .footer {
     display: flex;
     justify-content: space-between;
+  }
+}
+.controls {
+  text-align: right;
+  button {
+    font-size: 1em;
+  }
+}
+@media print {
+  .controls {
+    display: none;
   }
 }
