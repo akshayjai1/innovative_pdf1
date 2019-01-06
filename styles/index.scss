@@ -42,56 +42,61 @@ html {
             }
           }
         }
-        .invoiceTable {
-          display: grid;
+        .tableCover {
           border: 1px solid #aaa;
           border-bottom: none;
-          > div {
+          .invoiceTable {
+            display: grid;
+            border: 1px solid #aaa;
+            border-bottom: none;
+            border: none;
             border-bottom: 1px solid #aaa;
-            padding: 1em 2px;
-            text-align: center;
-            font-size: 1em;
-            overflow-wrap: break-word;
             page-break-inside: avoid !important;
-            display: inline-grid;
-          }  
-        }
-        .transportInvoiceItems {
-          grid-template-columns: 11% 12% 10% 16% 9% 9% 12% 9% 12%;
-          margin-top: 30px;
-          // page-break-inside: avoid !important;
-          
-          .heading {
+            > div {
+              padding: 1em 4px;
+              text-align: center;
+              font-size: 1em;
+              overflow-wrap: break-word;
+            }  
+          }
+          .transportInvoiceItems {
+            grid-template-columns: 11% 12% 10% 16% 9% 9% 12% 9% 12%;
+            // margin-top: 30px;
+            // page-break-inside: avoid !important;
+            
+            .heading {
+              font-weight: bold;
+              border-right: 1px solid #aaa;
+            }
+          }
+          .transportInvoiceTotal {
+            grid-template-columns: auto 120px 150px;
+            border-top: none;
+            
+            > div {
+              text-align: right;
+              padding-right: 2em;
+            }
+            .leftAlign {
+              text-align: left;
+            }
+            .rightBorder {
+              border-right: 1px solid #aaa;
+            }
+          }
+          .transportInvoiceTotalFinal {
+            grid-template-columns: auto 120px 150px;
+            border-top: none;
             font-weight: bold;
-            border-right: 1px solid #aaa;
-          }
-        }
-        .transportInvoiceTotal {
-          grid-template-columns: 78% 10% 12%;
-          border-top: none;
-          > div {
-            text-align: right;
-            padding-right: 2em;
-          }
-          .leftAlign {
-            text-align: left;
-          }
-          .rightBorder {
-            border-right: 1px solid #aaa;
-          }
-        }
-        .transportInvoiceTotalFinal {
-          grid-template-columns: 82% 5% 13%;
-          border-top: none;
-          font-weight: bold;
-          font-size: 1.5em;
-          > div {
-            text-align: right;
-            padding-right: 1em;
-          }
-          .rightAlign {
-            text-align: right;
-            padding-right: 1em;
+            font-size: 1.5em;
+            > div {
+              text-align: right;
+              padding-right: 1em;
+            }
+            .rightAlign {
+              text-align: right;
+              padding-right: 1em;
+            }
           }
         }
         .remarks {
