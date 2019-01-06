@@ -43,7 +43,7 @@ html {
           }
         }
         .tableCover {
-          border: 1px solid #aaa;
+          // border: 1px solid #aaa;
           border-bottom: none;
           .invoiceTable {
             display: grid;
@@ -60,14 +60,20 @@ html {
             }  
           }
           .transportInvoiceItems {
-            grid-template-columns: 11% 12% 10% 16% 9% 9% 12% 9% 12%;
+            grid-template-columns: 4% 6% 6% 8% 8% 10% 8% 8% 9% 4% 5% 8% 6% 10%;
+            &.border-top {
+              border-top: 1px solid #aaa;
+            }
             // margin-top: 30px;
             // page-break-inside: avoid !important;
             
             .heading {
               font-weight: bold;
-              border-right: 1px solid #aaa;
+              // border-right: 1px solid #aaa;
             }
+          }
+          .transportInvoiceTotalDescription {
+            grid-template-columns: 4% 54% 9% 4% 5% 14% 10%;
           }
           .transportInvoiceTotal {
             grid-template-columns: auto 120px 150px;
@@ -99,22 +105,23 @@ html {
             }
           }
         }
-        .remarks {
-          margin: 30px 0;
-        }
-        .rupeesInWords {
-          margin: 30px 0;
-        }
+
         .footer-wrapper {
           .gst {
             margin: 30px 0;
           }
-          .logisticSignature {
-            text-align: right;
-          }
           .footer {
             display: flex;
             justify-content: space-between;
+            .gstDetail {
+              min-width: 200px;
+            }
+            .notice {
+
+            }
+            .logisticSignature {
+              text-align: right;
+            }
           }
         }
       }
