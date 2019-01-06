@@ -5,44 +5,59 @@
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body>
-    <div class="controls">
-      <button onclick="window.print()">Print PDF</button>
-      <button onclick="printLandscape()">Print in Landscape</button>
-    </div>
-    <div class="page">
-      <div class="header">
-        <img src="./images/logo.png" alt="Transport Logo" />
-      </div>
-      <div class="starter">
-        <div class="recepient">
-            <b>To, M/S. Reliance Industries Pvt Ltd</b><br />
-            Warehouse # 32, Second Lane, Behind Hanuman Temple<br />
-            Pune, Maharashtra - 411014<br />
-            <b>Contact:</b> 1111111111<br />
-            <b>Email:</b> reliance@gmail.com<br />
-            <b>SAC Code:</b> 22323434NSFDSDV<br />
+    <div class="page-wrapper">
+      <div class="controls">
+        <div class="left">
+          <a class="primary black" onclick="">
+            <img src="./images/back.png" />Back</a>
+          <a class="primary red" onclick="">
+            <img src="./images/close.png" />Cancel Invoice</a>
+          <a class="primary yellow" onclick="">
+              <img src="./images/tick.png" />Submit Invoice</a>
         </div>
-        <div class="invoiceMetaDetail">
-          <table padding="0" margin="0" border="1">
-            <tbody>
-              <tr>
-                <td>Invoice Date</td>
-                <td>Jan 05, 2019</td>
-              </tr>
-              <tr>
-                <td>Invoice Status</td>
-                <td>Draft</td>
-              </tr>
-              <tr>
-                <td>Invoice No</td>
-                <td>DRAFT/18-19/644970</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="right">
+          <a class="primary" onclick="printLandscape()">
+              <img src="./images/print.png" />Download Landscape</a>
+          <a class="primary" onclick="window.print()">
+              <img src="./images/print.png" />Download Portrait</a>
+          <a class="primary" onclick="printLandscape()">
+              <img src="./images/paper.png" />Print Invoice</a>
         </div>
       </div>
-      
-      <div class="invoiceTable transportInvoiceItems">
+      <div class="page">
+        <div class="header">
+          <img src="./images/logo.png" alt="Transport Logo" />
+        </div>
+        <div class="starter">
+          <div class="recepient">
+              <b>To, M/S. Reliance Industries Pvt Ltd</b><br />
+              Warehouse # 32, Second Lane, Behind Hanuman Temple<br />
+              Pune, Maharashtra - 411014<br />
+              <b>Contact:</b> 1111111111<br />
+              <b>Email:</b> reliance@gmail.com<br />
+              <b>SAC Code:</b> 22323434NSFDSDV<br />
+          </div>
+          <div class="invoiceMetaDetail">
+            <table padding="0" margin="0" border="1">
+              <tbody>
+                <tr>
+                  <td>Invoice Date</td>
+                  <td>Jan 05, 2019</td>
+                </tr>
+                <tr>
+                  <td>Invoice Status</td>
+                  <td>Draft</td>
+                </tr>
+                <tr>
+                  <td>Invoice No</td>
+                  <td>DRAFT/18-19/644970</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div class="invoiceTable transportInvoiceItems">
           <div class="heading">Date</div>
           <div class="heading">Vehicle No</div>
           <div class="heading">LR. No </div>
@@ -55,275 +70,275 @@
           <div class="heading">Advance</div>
           <div class="heading" style="border-right: none;">Balance</div>
           <div>Dec 24, 2018</div>
-            <div>MH18 AT 1241</div>
-            <div>987001214</div>
-            
-            <div>Pune to Bangalore</div>
-            <div> 0</div>
-            <div> 0.0</div>
-            
-            <div>16000.0</div>
-            <div> 0.0</div>
-            <div> 16000.0</div>
+          <div>MH18 AT 1241</div>
+          <div>987001214</div>
           
+          <div>Pune to Bangalore</div>
+          <div> 0</div>
+          <div> 0.0</div>
           
-            <div>Dec 25, 2018</div>
-            <div>MH18 AT 1236</div> 
-            <div>987001215</div> 
-          
-            <div>Bangalore to Chennai</div> 
-            <div>0</div> 
-            <div>0.0</div> 
-          
-            <div>22000.0</div> 
-            <div>0.0</div> 
-            <div>22000.0</div>
-          
-          
-            <div>Dec 27, 2018</div> 
-            <div>MH18 AT 1235</div> 
-            <div>987001216</div> 
-            <div>Chennai to Hyderabad</div> 
-            <div>0</div> 
-            <div>0.0</div> 
-            <div>21500.0</div> 
-            <div>0.0</div> 
-            <div>21500.0</div>
-          
-          
-            <div>Dec 28, 2018</div> 
-            <div>MH18 AT 1244</div> 
-            <div>987001217</div> 
-            <div>Hyderabad to Pune</div> 
-            <div>0</div> 
-            <div>0.0</div> 
-            <div>21000.0</div> 
-            <div>0.0</div> 
-            <div>21000.0</div>
-          
-          
-            <div>Dec 30, 2018</div> 
-            <div>MH18 AT 1242</div> 
-            <div>987001218</div> 
-            <div>Pune to Delhi</div> 
-            <div>0</div> 
-            <div>0.0</div> 
-            <div>38500.0</div> 
-            <div>0.0</div> 
-            <div>38500.0</div>
-           
-          
-            <div>Dec 24, 2018</div> 
-            <div>MH56 AT 2005</div> 
-            <div>987001235</div> 
-            <div>Pune to Mumbai</div> 
-            <div>4</div> 
-            <div>250.0</div> 
-            <div>1000.0</div> 
-            <div>0.0</div> 
-            <div>1000.</div>
-          
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div>Overloading Charges</div>
-            <div></div>
-            <div></div> 
-            <div>1000.0</div>
-            <div></div> 
-            <div>1000.0</div>
-          
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div>Weight Charges</div>
-            <div></div>
-            <div></div> 
-            <div>345.89</div>
-            <div></div> 
-            <div>345.89</div>
-          
-          
-            <div>Dec 24, 2018</div> 
-            <div>MH56 AT 2005</div> 
-            <div>987001235</div> 
-            <div>Pune to Mumbai</div> 
-            <div>4</div> 
-            <div>250.0</div> 
-            <div>1000.0</div> 
-            <div>0.0</div> 
-            <div>1000.</div>
-          
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div>Overloading Charges</div>
-            <div></div>
-            <div></div> 
-            <div>1000.0</div>
-            <div></div> 
-            <div>1000.0</div>
-          
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div>Weight Charges</div>
-            <div></div>
-            <div></div> 
-            <div>345.89</div>
-            <div></div> 
-            <div>345.89</div>
-          
-          
-            <div>Dec 24, 2018</div> 
-            <div>MH56 AT 2005</div> 
-            <div>987001235</div> 
-            <div>Pune to Mumbai</div> 
-            <div>4</div> 
-            <div>250.0</div> 
-            <div>1000.0</div> 
-            <div>0.0</div> 
-            <div>1000.</div>
-          
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div>Overloading Charges</div>
-            <div></div>
-            <div></div> 
-            <div>1000.0</div>
-            <div></div> 
-            <div>1000.0</div>
-          
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div>Weight Charges</div>
-            <div></div>
-            <div></div> 
-            <div>345.89</div>
-            <div></div> 
-            <div>345.89</div>
-          
-          
-            <div>Dec 24, 2018</div> 
-            <div>MH56 AT 2005</div> 
-            <div>987001235</div> 
-            <div>Pune to Mumbai</div> 
-            <div>4</div> 
-            <div>250.0</div> 
-            <div>1000.0</div> 
-            <div>0.0</div> 
-            <div>1000.</div>
-          
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div>Overloading Charges</div>
-            <div></div>
-            <div></div> 
-            <div>1000.0</div>
-            <div></div> 
-            <div>1000.0</div>
-          
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div>Weight Charges</div>
-            <div></div>
-            <div></div> 
-            <div>345.89</div>
-            <div></div> 
-            <div>345.89</div>
-          
-          
-            <div>Dec 24, 2018</div> 
-            <div>MH56 AT 2005</div> 
-            <div>987001235</div> 
-            <div>Pune to Mumbai</div> 
-            <div>4</div> 
-            <div>250.0</div> 
-            <div>1000.0</div> 
-            <div>0.0</div> 
-            <div>1000.</div>
-          
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div>Overloading Charges</div>
-            <div></div>
-            <div></div> 
-            <div>1000.0</div>
-            <div></div> 
-            <div>1000.0</div>
-          
-          
-            <div></div>
-            <div></div>
-            <div></div>
-            <div>Weight Charges</div>
-            <div></div>
-            <div></div> 
-            <div>345.89</div>
-            <div></div> 
-            <div>345.89</div>
-          
+          <div>16000.0</div>
+          <div> 0.0</div>
+          <div> 16000.0</div>
         
-      </div>
-      <div class="invoiceTable transportInvoiceTotal">
-        <div></div>
-        <div class="leftAlign rightBorder">Total</div>
-        <div class="rightAlign">131779.45</div>
-        <div></div>
-        <div class="leftAlign rightBorder">Advance</div>
-        <div class="rightAlign">0.0</div>
-        <div></div>
-        <div class="leftAlign rightBorder">Balance</div>
-        <div class="rightAlign">131779.45</div>
-      </div>
-      <div class="invoiceTable transportInvoiceTotalFinal">
-        <div></div>
-        <div>&#8377;</div>
-        <div>131779.45</div>
-      </div>
-      <div class="remarks">
-        <b>Remark:</b><br />
-        NET 30 Days. Finance Charge of 1.5% will be made on unpaid balances after 30 days.
-      </div>
-      <div class="rupeesInWords">
-        <b>Rupees In Words</b> <br/>
-        One Lakh, Thirty One Thousand, Seven Hundred And Seventy Nine Rupies And Forty Five Paise Only
-      </div>
-      <div class="logisticSignature">
-        <b>FOR- SHREE TEMPO SERVICE</b>
-      </div>
-      <div class="gst">
-          <b>GST:</b> GSTAT1312309131
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <b>PAN:</b> AJBADFA091
-      </div>
-      <div class="footer">
-        <div class="gstDetail">
-          <b>GST</b> @:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5%
-          <br />
-          <b>CGST</b> @:&nbsp;&nbsp;&nbsp;5%
-          <br />
-          <b>CGST</b> @:&nbsp;&nbsp;&nbsp;5%
-          <br />
+        
+          <div>Dec 25, 2018</div>
+          <div>MH18 AT 1236</div> 
+          <div>987001215</div> 
+        
+          <div>Bangalore to Chennai</div> 
+          <div>0</div> 
+          <div>0.0</div> 
+        
+          <div>22000.0</div> 
+          <div>0.0</div> 
+          <div>22000.0</div>
+        
+        
+          <div>Dec 27, 2018</div> 
+          <div>MH18 AT 1235</div> 
+          <div>987001216</div> 
+          <div>Chennai to Hyderabad</div> 
+          <div>0</div> 
+          <div>0.0</div> 
+          <div>21500.0</div> 
+          <div>0.0</div> 
+          <div>21500.0</div>
+        
+        
+          <div>Dec 28, 2018</div> 
+          <div>MH18 AT 1244</div> 
+          <div>987001217</div> 
+          <div>Hyderabad to Pune</div> 
+          <div>0</div> 
+          <div>0.0</div> 
+          <div>21000.0</div> 
+          <div>0.0</div> 
+          <div>21000.0</div>
+        
+        
+          <div>Dec 30, 2018</div> 
+          <div>MH18 AT 1242</div> 
+          <div>987001218</div> 
+          <div>Pune to Delhi</div> 
+          <div>0</div> 
+          <div>0.0</div> 
+          <div>38500.0</div> 
+          <div>0.0</div> 
+          <div>38500.0</div>
+        
+        
+          <div>Dec 24, 2018</div> 
+          <div>MH56 AT 2005</div> 
+          <div>987001235</div> 
+          <div>Pune to Mumbai</div> 
+          <div>4</div> 
+          <div>250.0</div> 
+          <div>1000.0</div> 
+          <div>0.0</div> 
+          <div>1000.</div>
+        
+        
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>Overloading Charges</div>
+          <div></div>
+          <div></div> 
+          <div>1000.0</div>
+          <div></div> 
+          <div>1000.0</div>
+        
+        
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>Weight Charges</div>
+          <div></div>
+          <div></div> 
+          <div>345.89</div>
+          <div></div> 
+          <div>345.89</div>
+        
+        
+          <div>Dec 24, 2018</div> 
+          <div>MH56 AT 2005</div> 
+          <div>987001235</div> 
+          <div>Pune to Mumbai</div> 
+          <div>4</div> 
+          <div>250.0</div> 
+          <div>1000.0</div> 
+          <div>0.0</div> 
+          <div>1000.</div>
+        
+        
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>Overloading Charges</div>
+          <div></div>
+          <div></div> 
+          <div>1000.0</div>
+          <div></div> 
+          <div>1000.0</div>
+        
+        
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>Weight Charges</div>
+          <div></div>
+          <div></div> 
+          <div>345.89</div>
+          <div></div> 
+          <div>345.89</div>
+        
+        
+          <div>Dec 24, 2018</div> 
+          <div>MH56 AT 2005</div> 
+          <div>987001235</div> 
+          <div>Pune to Mumbai</div> 
+          <div>4</div> 
+          <div>250.0</div> 
+          <div>1000.0</div> 
+          <div>0.0</div> 
+          <div>1000.</div>
+        
+        
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>Overloading Charges</div>
+          <div></div>
+          <div></div> 
+          <div>1000.0</div>
+          <div></div> 
+          <div>1000.0</div>
+        
+        
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>Weight Charges</div>
+          <div></div>
+          <div></div> 
+          <div>345.89</div>
+          <div></div> 
+          <div>345.89</div>
+        
+        
+          <div>Dec 24, 2018</div> 
+          <div>MH56 AT 2005</div> 
+          <div>987001235</div> 
+          <div>Pune to Mumbai</div> 
+          <div>4</div> 
+          <div>250.0</div> 
+          <div>1000.0</div> 
+          <div>0.0</div> 
+          <div>1000.</div>
+        
+        
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>Overloading Charges</div>
+          <div></div>
+          <div></div> 
+          <div>1000.0</div>
+          <div></div> 
+          <div>1000.0</div>
+        
+        
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>Weight Charges</div>
+          <div></div>
+          <div></div> 
+          <div>345.89</div>
+          <div></div> 
+          <div>345.89</div>
+        
+        
+          <div>Dec 24, 2018</div> 
+          <div>MH56 AT 2005</div> 
+          <div>987001235</div> 
+          <div>Pune to Mumbai</div> 
+          <div>4</div> 
+          <div>250.0</div> 
+          <div>1000.0</div> 
+          <div>0.0</div> 
+          <div>1000.</div>
+        
+        
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>Overloading Charges</div>
+          <div></div>
+          <div></div> 
+          <div>1000.0</div>
+          <div></div> 
+          <div>1000.0</div>
+        
+        
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>Weight Charges</div>
+          <div></div>
+          <div></div> 
+          <div>345.89</div>
+          <div></div> 
+          <div>345.89</div>
         </div>
-        <div class="signature">Authorized Signature</div>
+        <div class="invoiceTable transportInvoiceTotal">
+          <div></div>
+          <div class="leftAlign rightBorder">Total</div>
+          <div class="rightAlign">131779.45</div>
+          <div></div>
+          <div class="leftAlign rightBorder">Advance</div>
+          <div class="rightAlign">0.0</div>
+          <div></div>
+          <div class="leftAlign rightBorder">Balance</div>
+          <div class="rightAlign">131779.45</div>
+        </div>
+        <div class="invoiceTable transportInvoiceTotalFinal">
+          <div></div>
+          <div>&#8377;</div>
+          <div>131779.45</div>
+        </div>
+        <div class="remarks">
+          <b>Remark:</b><br />
+          NET 30 Days. Finance Charge of 1.5% will be made on unpaid balances after 30 days.
+        </div>
+        <div class="rupeesInWords">
+          <b>Rupees In Words</b> <br/>
+          One Lakh, Thirty One Thousand, Seven Hundred And Seventy Nine Rupies And Forty Five Paise Only
+        </div>
+        <div class="footer-wrapper">
+          <div class="logisticSignature">
+            <b>FOR- SHREE TEMPO SERVICE</b>
+          </div>
+          <div class="gst">
+              <b>GST:</b> GSTAT1312309131
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <b>PAN:</b> AJBADFA091
+          </div>
+          <div class="footer">
+            <div class="gstDetail">
+              <b>GST</b> @:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5%
+              <br />
+              <b>CGST</b> @:&nbsp;&nbsp;&nbsp;5%
+              <br />
+              <b>CGST</b> @:&nbsp;&nbsp;&nbsp;5%
+              <br />
+            </div>
+            <div class="signature">Authorized Signature</div>
+          </div>
+        </div>
       </div>
     </div>
-
   </body>
   <script type="text/javascript" src="./index.js" ></script>
 </html>
