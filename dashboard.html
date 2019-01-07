@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>Performance Dashboard</title>
+    <link rel="stylesheet" href="./styles/dashboard.css" />
+  </head>
+  <body>
+    <div class="cover">
+      <div class="sidePane">
+        <div class="cardLook tripStatusCard">
+          <div class="status">Completed</div>
+          <div class="dateLabel">Trip Closing Date</div>
+          <div class="date"></div>
+        </div>
+        <div class="cardLook placementCard">
+          <div class="heading">Placement Delayed</div>
+          <div class="placementList">
+            <div class="placementItem">
+              <div class="id">ID 123A432</div>
+              <div class="delayDuration danger">1 hrs</div>
+              <div class="arrow"><img src="./images/dashboard/arrow.png" alt="" /></div>
+            </div>
+            <div class="placementItem">
+                <div class="id">ID 123A432</div>
+                <div class="delayDuration danger">1 hrs</div>
+                <div class="arrow"><img src="./images/dashboard/arrow.png" alt="" /></div>
+            </div>
+            <div class="placementItem">
+                <div class="id">ID 123A432</div>
+                <div class="delayDuration danger">1 hrs</div>
+                <div class="arrow"><img src="./images/dashboard/arrow.png" alt="" /></div>
+            </div>
+            <div class="placementItem">
+                <div class="id">ID 123A432</div>
+                <div class="delayDuration deviant">1 hrs</div>
+                <div class="arrow"><img src="./images/dashboard/arrow.png" alt="" /></div>
+            </div>
+            <div class="placementItem">
+                <div class="id">ID 123A432</div>
+                <div class="delayDuration deviant">1 hrs</div>
+                <div class="arrow"><img src="./images/dashboard/arrow.png" alt="" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="cardLook billStatusCard">
+          <div class="bold">EWay Bill status</div>
+          <div class="bold">Processed</div>
+          <br />
+          <div class="bold">Validity</div>
+          <div class="date"></div>
+          <div class="control">
+            <div class="editTrip">Edit Trip</div>
+            <a href="" class="viewButton">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="mainPane">
+        <div class="cardLook dashboard">
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="./js/Chart.bundle.min.js"></script>
+  <script src="./dashboard.js" type="text/javascript"></script>
+
+</html>
