@@ -2,13 +2,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline: 0;
 }
-$font-0: 12px;
-$font-0_5: 13px; 
-$font-1: 14px;
-$font-2: 16px;
-$font-3: 18px;
-$font-4: 20px;
+$font5: 12px;
+$font4: 13px; 
+$font3: 14px;
+$font2: 16px;
+$font1: 18px;
 
 //color
 $gray-1: rgb(120, 120, 120);
@@ -16,14 +16,20 @@ $gray-2: rgb(161, 161, 161);
 $gray-white: rgb(244, 244, 244);
 $green-1: rgb(0, 163, 0);
 $red-1: rgb(193, 83, 89);
+$black-1: rgb(60, 60, 60);
 
 //variables 
 $left-shift: -50px;
 html {
+  position: relative;
+  margin: 0;
+  // height: 100%;
   body {
+    margin: 0;
     font-family: sans-serif;
+    // height: 100%;
     .bold {
-      font-weight: bold;
+      font-weight: 400;
     }
     .green {
       color: $green-1;
@@ -37,6 +43,7 @@ html {
       display: grid;
       grid-template-columns: 280px auto;
       max-width: calc(100vw - 150px);
+      height: 100%;
       .cardLook {
         background-color: #fff;
         box-shadow: 0px 0px 10px 0px rgba(120,120,120,1);
@@ -50,14 +57,14 @@ html {
         left: $left-shift;
         .tripStatusCard {
           padding: 20px;
-          font-size: $font-0_5;
+          font-size: $font4;
           .status {
             background-color: $green-1;
             display: inline-block;
             color: #fff;
             border-radius: 15px;
             padding: 5px 19px;
-            font-size: $font-1;
+            font-size: $font3;
             letter-spacing: 1px;
             margin: 0 0 15px;
           }
@@ -73,7 +80,7 @@ html {
         .placementCard {
           padding: 5px;
           .heading {
-            font-size: $font-4;
+            font-size: $font1;
             font-weight: bold;
             padding: 15px 10px;
           }
@@ -106,13 +113,13 @@ html {
         .billStatusCard {
           padding: 20px;
           .date {
-            font-size: $font-1;
+            font-size: $font3;
           }
           .control {
             align-items: center;
             border-top: 1px solid $gray-white;
             display: flex;
-            font-size: $font-2;
+            font-size: $font2;
             justify-content: space-between;
             margin-top: 10px;
             padding: 15px 0 5px;
@@ -124,10 +131,11 @@ html {
               background-color: rgb(0, 153, 253);
               background-image: linear-gradient(to bottom, #0099FD, #0088EE);
               color: #fff;
-              padding: 10px 20px;
-              border-radius: 6px;
+              padding: 8px 30px;
+              border-radius: 4px;
               border: 1px solid rgb(30, 130, 220);
               text-decoration: none;
+              font-weight: 100;
             }
           }
         }
@@ -136,21 +144,31 @@ html {
         position: relative;
         left: $left-shift;
         .dashboard {
-          padding: 20px;
+          padding: 30px;
           color: $gray-2;
           .heading {
-            font-size: $font-4;
-
+            font-size: $font2;
+            // margin-top: 20px;
           }
           .menu {
+            color: $black-1;
+            font-size: $font3;
+            margin: 10px 0;
             img {
               transform: rotate(90deg);
+              position: relative;
+              top: 4px;
             }
           }
           .details {
             display: grid;
             grid-template-columns: 200px 200px 200px 200px auto;
+            margin: 20px 0;
+            
             .detailBlock {
+              > div {
+                margin: 5px 0;
+              }
               .label {
 
               }

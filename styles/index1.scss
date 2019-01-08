@@ -9,9 +9,8 @@ html {
       background-color: #ddd;
       margin: 0;
       .page {
-        border: 1px solid #aaa black;
         padding: 20px;
-        margin: 20px;
+        margin: 20px 60px;
         background-color: #fff;
         .header {
           text-align: center;
@@ -129,7 +128,7 @@ html {
         background-color: #fff;
         text-align: right;
         // border: 1px solid;
-        margin: 20px;
+        margin: 20px 60px;
         display: flex;
         justify-content: space-between;
         .left {
@@ -179,9 +178,12 @@ html {
     // display: inline;
   }
   html {
+    
     body {
+      margin: 0px !important;
       .page-wrapper {
         .page {
+          margin: 0px !important;
           .invoiceTable {
             // overflow: scroll;  
             > div {
@@ -206,5 +208,10 @@ html {
     }
   }
 
-  
+  @page {
+    margin: 1cm !important;
+  }  
+}
+@page {
+  margin: 1cm !important;
 }
