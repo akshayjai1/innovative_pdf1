@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage User</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/manageUser.css" /></head>
+  <body>
+    <div class="cover">
+        <div class="sidePane">
+          <!--<img class="dnxLogo" alt="Logo" src="/home/shivom/Downloads/logo.png" />-->
+          <img class="dnxLogo" alt="Logo" src="./images/inno_attendance.png" />
+          <form class="adminLoginForm" action="/test" method="POST" enctype="multipart/form-data">
+              <div class="form-group adminLogin">
+                <div class="heading">Add User Form</div>
+                
+                <label for="name">Name</label>
+                <input class="form-control" name="name" id="name" placeholder="Name" type="text" required />
+                
+                <label for="email">Email</label>
+                <input class="form-control" name="email" id="email" placeholder="Email" type="email" required />
+                
+                <label for="empId">Employee Id</label>
+                <input class="form-control" name="empId" id="empId" placeholder="Employee Id" type="text" required />
+          
+                <label for="phone">Phone Number</label>
+                <input class="form-control" name="phone" id="phone" placeholder="Phone Number" type="phone" pattern="[0-9]{10}" required />
+
+                <label for="photo">Upload Photos</label>
+                <input class="form-control" name="photo" id="photo" placeholder="Upload photos" type="file" required multiple accept="image/jpg,image/png,image/jpeg,image/gif"/>
+          
+                <!-- <label for="inputPassword">Password</label> <input class="form-control" id="inputPassword" placeholder="Password" type="password" /> -->
+                <button class="btn btn-primary login1" type="submit">Add User</button>
+              </div>
+            </form>
+        </div>
+        <div class="mainPane">
+          <div class="heading">DNX Attendance Portal</div>
+          <div class="container">
+              <table cellpadding="0" cellspacing="0" border="0" class="dataTable table table-striped" id="example">
+            
+              </table>
+            </div>
+        </div>
+      </div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>$.browser = {}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-hashchange/1.3/jquery.ba-hashchange.min.js"></script>
+
+</html>
+<script>
+$(document).ready(function() {
+  var dataSet = [
+    ["Tiger Nixon", "a.b@c.com", "5421", "2011004325"],
+    ["Garrett Winters", "a.b@c.com", "5421", "2011004325"],
+    ["Ashton Cox", "a.b@c.com", "5421", "2011004325"],
+    ["Cedric Kelly", "a.b@c.com", "5421", "2011004325"],
+  ];
+
+var columnDefs = [{
+  title: "Name"
+}, {
+  title: "Email"
+}, {
+  title: "Employee Id"
+}, {
+  title: "Phone Number"
+}];
+
+var myTable;
+
+myTable = $('#example').DataTable({
+  "sPaginationType": "full_numbers",
+  data: dataSet,
+  columns: columnDefs,
+  dom: 'Bfrtip',        // Needs button container
+        select: 'single',
+        responsive: true,
+        altEditor: true,     // Enable altEditor
+        buttons: [{
+          text: 'Add',
+          name: 'add'        // do not change name
+        },
+        {
+          extend: 'selected', // Bind to Selected row
+          text: 'Edit',
+          name: 'edit'        // do not change name
+        },
+        {
+          extend: 'selected', // Bind to Selected row
+          text: 'Delete',
+          name: 'delete'      // do not change name
+       }]
+  });
+});
+
+</script>
