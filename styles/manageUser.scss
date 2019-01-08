@@ -119,10 +119,19 @@ html {
           font-weight: bold;
           color: #4472c4;
         }
+        .container {
+          width: 950px !important;
+          margin-top: 60px;
+          #dnxTable_wrapper {
+            width: 950px !important;
+            #dnxTable {
+              width: 950px !important;
+            }
+          }
+        }
+        }
       }
 
     
   }
-}
-
 }
