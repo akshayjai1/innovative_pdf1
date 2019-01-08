@@ -12,7 +12,10 @@ $font-4: 20px;
 
 //color
 $gray-1: rgb(120, 120, 120);
+$gray-2: rgb(161, 161, 161);
 $gray-white: rgb(244, 244, 244);
+$green-1: rgb(0, 163, 0);
+$red-1: rgb(193, 83, 89);
 
 //variables 
 $left-shift: -50px;
@@ -22,11 +25,18 @@ html {
     .bold {
       font-weight: bold;
     }
+    .green {
+      color: $green-1;
+    }
+    .red {
+      color: $red-1;
+    }
     .cover {
       margin-left: 50px;
       background-color: rgb(244, 244, 244);
       display: grid;
       grid-template-columns: 280px auto;
+      max-width: calc(100vw - 150px);
       .cardLook {
         background-color: #fff;
         box-shadow: 0px 0px 10px 0px rgba(120,120,120,1);
@@ -42,7 +52,7 @@ html {
           padding: 20px;
           font-size: $font-0_5;
           .status {
-            background-color: rgb(0, 163, 0);
+            background-color: $green-1;
             display: inline-block;
             color: #fff;
             border-radius: 15px;
@@ -78,7 +88,7 @@ html {
               .delayDuration {
                 margin-left: 25%;
                 &.danger {
-                  color: rgb(193, 83, 89);
+                  color: $red-1;
                 }
                 &.deviant {
                   color: rgb(170, 170, 170);
@@ -126,7 +136,37 @@ html {
         position: relative;
         left: $left-shift;
         .dashboard {
+          padding: 20px;
+          color: $gray-2;
+          .heading {
+            font-size: $font-4;
 
+          }
+          .menu {
+            img {
+              transform: rotate(90deg);
+            }
+          }
+          .details {
+            display: grid;
+            grid-template-columns: 200px 200px 200px 200px auto;
+            .detailBlock {
+              .label {
+
+              }
+              .value {
+
+              }
+              .inference {
+                color: $green-1;
+                img.inferenceImage {
+                  height: 16px;
+                  position: relative;
+                  top: 2px;
+                }
+              }
+            }
+          }
         }
       }
     }
