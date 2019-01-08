@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link href="/static/login.css" rel="stylesheet" type="text/css">
+  <!-- <link href="./styles/login.css" rel="stylesheet" /> -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    var stream, imageCapture, canvas, context;
+    function getMediaStream(){
+      stream = document.getElementById("videoElement");
+      canvas = document.getElementById("canvas");
+      context = canvas.getContext("2d");
+      window.navigator.mediaDevices.getUserMedia({video: true})
+      .then( mediaStream => {
+          stream.srcObject = mediaStream;
+          let mediaStreamTrack = mediaStream.getVideoTracks()[0];
+          imageCapture = new ImageCapture(mediaStreamTrack);
+          console.log(imageCapture);
+      })
+      .catch(error);
+    }
+
+    function error(error) {
+      console.error('error:', error);
+    }
+
+    function takePhoto() {
+        context.drawImage(stream, 0, 0, canvas.width, canvas.height);
+        var dataURL = canvas.toDataURL();
+        console.log(encodeURI(dataURL));
+        $.ajax({
+            type: "POST",
+            url: "/recognize",
+            data: {"imageURL": encodeURI(dataURL)},
+            statusCode: {
+                200: function (data) {
+                    if(confirm(data)) {
+                        window.location.href = "/success";
+                    }
+                },
+                201: function (data) {
+                    alert(data)
+                }
+            }
+        });
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    function toggleManualLogin() {
+      $(".manualLogin").toggle();
+      let btn = $(".manualLoginButton"); 
+      // if(btn.text()==).text("")
+    }
+  </script>
+</head>
+<body onload="getMediaStream()">
+  <div class="cover">
+    <div class="sidePane">
+      <!--<img class="dnxLogo" alt="Logo" src="/home/shivom/Downloads/logo.png" />-->
+      <img class="dnxLogo" alt="Logo" src="./images/inno_attendance.png" />
+      <!--<button class="btn btn-primary login3" onclick="toggleManualLogin()">Login Manually</button>-->
+      <form action="" method="POST">
+        <div class="form-group manualLogin">
+          <label for="inputUsername">Username</label>
+          <input class="form-control" id="inputUsername" placeholder="Username" type="email" />
+          <label for="inputPassword">Password</label> <input class="form-control" id="inputPassword" placeholder="Password" type="password" />
+          <button class="btn btn-primary login1" >Login</button>
+          <button class="btn btn-primary login1" type="submit">Log Out</button>
+          </div>
+        </form>
+        
+      
+    </div>
+    <div class="mainPane">
+      <div class="heading">Welcome to DNX FACIAL ATTENDANCE SYSTEM</div>
+      <div class="videoStreamWrapper">
+        <canvas height="0" id="canvas" width=240></canvas>
+        <video autoplay="autoplay" id="videoElement"></video>
+        <div class="buttonWrapper">
+          <button class="btn btn-primary login2" id="capture" onclick="takePhoto()">PUNCH IN using Face</button>
+          <div></div>
+          <button class="btn btn-primary login2" id="capture" onclick="takePhoto()">PUNCH Out using Face</button>
+        </div>
+      </div>  
+    </div>
+  </div>
+</body>
+</html>
+
+<style>
+    *{box-sizing:border-box;margin:0;padding:0;outline:0}html body .cover{display:grid;grid-template-columns:360px auto}html body .cover .sidePane .dnxLogo{width:80%;margin:15px 25px}html body .cover .sidePane .form-group{padding:20px 27px}html body .cover .sidePane .form-group label{margin:15px 0}html body .cover .sidePane .form-group input{width:280px}html body .cover .sidePane .form-group .login1{width:135px;display:inline-block;margin:40px 0}html body .cover .mainPane .heading{font-size:32px;display:inline-block;width:100%;text-align:center;vertical-align:middle;height:80px;padding:20px;font-weight:700;color:#4472c4}html body .cover .mainPane .videoStreamWrapper{width:80%;max-height:500px;position:relative;margin:auto;max-width:720px}html body .cover .mainPane .videoStreamWrapper video#videoElement{width:100%;max-height:100%}html body .cover .mainPane .videoStreamWrapper .buttonWrapper{display:grid;grid-template-columns:240px auto 240px}html body .cover .mainPane .videoStreamWrapper .buttonWrapper .login2{margin:30px 0}</style>

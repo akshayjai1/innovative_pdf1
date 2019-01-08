@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+html {
+  body {
+    .cover {
+      display: grid;
+      grid-template-columns: 360px auto;
+      .sidePane {
+        .dnxLogo {
+          width: 80%;
+          margin: 15px 25px;
+        }
+        .form-group {
+          padding: 20px 27px;
+          // display: none;
+          label {
+            margin: 15px 0;
+          }
+          input {
+            width: 280px;
+            // margin: 15px 0px;
+          }
+          .login1 {
+            width: 135px;
+            display: inline-block;
+            margin: 40px 0;
+          }
+        }
+        
+      }
+      .mainPane {
+        // padding: 20px;
+        // border: 1px solid;
+        .heading {
+          font-size: 32px;
+          display: inline-block;
+          width: calc(100%);
+          text-align: center;
+          vertical-align: middle;
+          height: 80px;
+          // background-color: yellow;
+          padding: 20px;
+          font-weight: bold;
+          color: #4472c4;
+          
+        }
+        .videoStreamWrapper {
+          width: 80%;
+          max-height: 500px;
+          position: relative;
+          margin: auto;
+          max-width: 720px;
+          video#videoElement {
+            width: 100%;
+            max-height: 100%;
+        }
+        .buttonWrapper {
+          display: grid;
+          grid-template-columns: 240px auto 240px;
+          .login2 {
+            margin: 30px 0;
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+
+}
+
+}
