@@ -54,7 +54,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-  <script src="http://kingkode.com/datatables.editor.lite/js/altEditor/dataTables.altEditor.free.js"></script>
+  
   <script src="http://cdn.datatables.net/responsive/2.0.2/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>
   <script src="https://cdn.datatables.net/select/1.1.2/js/dataTables.select.min.js"></script>
@@ -63,27 +63,6 @@
 </html>
 
 <script>
-/*! Datatables altEditor 1.0
- */
-
-/**
- * @summary     altEditor
- * @description Lightweight editor for DataTables
- * @version     1.0
- * @file        dataTables.editor.lite.js
- * @author      kingkode (www.kingkode.com)
- * @contact     www.kingkode.com/contact
- * @copyright   Copyright 2016 Kingkode
- *
- * This source file is free software, available under the following license:
- *   MIT license - http://datatables.net/license/mit
- *
- * This source file is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
- *
- * For details please refer to: http://www.kingkode.com
- */
 
  (function( factory ){
     if ( typeof define === 'function' && define.amd ) {
@@ -248,43 +227,7 @@
 
           }
 
-         // add Delete Button
-         if( this.s.dt.button('delete:name') )
-         {
-            this.s.dt.button('delete:name').action( function(e, dt, node, config) {
-              var rows = dt.rows({
-                selected: true
-              }).count();
-
-              that._openDeleteModal();
-            });
-
-            $(document).on('click', '#deleteRowBtn', function(e)
-            {
-              e.preventDefault();
-              e.stopPropagation();
-              that._deleteRow();
-            });
-         }
-
-         // add Add Button
-         if( this.s.dt.button('add:name') )
-         {
-            this.s.dt.button('add:name').action( function(e, dt, node, config) {
-              var rows = dt.rows({
-                selected: true
-              }).count();
-
-              that._openAddModal();
-            });
-
-            $(document).on('click', '#addRowBtn', function(e)
-            {
-              e.preventDefault();
-              e.stopPropagation();
-              that._addRowData();
-            });
-         }
+        
 
        },
 
@@ -369,6 +312,8 @@
 
            dt.row({ selected:true }).data(data);
        },
+
+
 
        _getExecutionLocationFolder: function() {
              var fileName = "dataTables.altEditor.js";
@@ -455,8 +400,7 @@
    DataTable.altEditor = altEditor;
 
    return altEditor;
-}));
-</script>
+}));</script>
 <script>
 $(document).ready(function() {
   fetch('https://192.168.1.12:2000/fetch_data',{
@@ -479,7 +423,7 @@ $(document).ready(function() {
 
     myTable = $('#dnxTable').DataTable({
       "sPaginationType": "full_numbers",
-      data: dataSet,
+      data: data,
       columns: columnDefs,
       dom: 'Bfrtip',        // Needs button container
             select: 'single',
@@ -494,12 +438,7 @@ $(document).ready(function() {
             ]
       });
   })
-  var dataSet = [
-    ["Tiger Nixon", "a.b@c.com", "5421", "2011004325"],
-    ["Garrett Winters", "a.b@c.com", "5421", "2011004325"],
-    ["Ashton Cox", "a.b@c.com", "5421", "2011004325"],
-    ["Cedric Kelly", "a.b@c.com", "5421", "2011004325"],
-  ];
+
 
 
 });
