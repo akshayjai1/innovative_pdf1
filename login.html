@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
-  <link href="/static/login.css" rel="stylesheet" type="text/css">
-  <!-- <link href="./styles/login.css" rel="stylesheet" /> -->
+  <!-- <link href="/static/login.css" rel="stylesheet" type="text/css"> -->
+  <link href="./styles/login.css" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -49,6 +49,20 @@
                 }
             }
         });
+        $.ajax({
+            type: "GET",
+            url: "https://192.168.1.12:2000/fetch_data",
+            statusCode: {
+                200: function (data) {
+                    if(confirm(data)) {
+                        window.location.href = "/success";
+                    }
+                },
+                201: function (data) {
+                    alert(data)
+                }
+            }
+        });
         context.clearRect(0, 0, canvas.width, canvas.height);
     }
     function toggleManualLogin() {
@@ -62,7 +76,7 @@
   <div class="cover">
     <div class="sidePane">
       <!--<img class="dnxLogo" alt="Logo" src="/home/shivom/Downloads/logo.png" />-->
-      <img class="dnxLogo" alt="Logo" src="./images/inno_attendance.png" />
+      <img class="dnxLogo" alt="Logo" src="./images/inno_facex.png" />
       <!--<button class="btn btn-primary login3" onclick="toggleManualLogin()">Login Manually</button>-->
       <form action="" method="POST">
         <div class="form-group manualLogin">
@@ -91,6 +105,3 @@
   </div>
 </body>
 </html>
-
-<style>
-    *{box-sizing:border-box;margin:0;padding:0;outline:0}html body .cover{display:grid;grid-template-columns:360px auto}html body .cover .sidePane .dnxLogo{width:80%;margin:15px 25px}html body .cover .sidePane .form-group{padding:20px 27px}html body .cover .sidePane .form-group label{margin:15px 0}html body .cover .sidePane .form-group input{width:280px}html body .cover .sidePane .form-group .login1{width:135px;display:inline-block;margin:40px 0}html body .cover .mainPane .heading{font-size:32px;display:inline-block;width:100%;text-align:center;vertical-align:middle;height:80px;padding:20px;font-weight:700;color:#4472c4}html body .cover .mainPane .videoStreamWrapper{width:80%;max-height:500px;position:relative;margin:auto;max-width:720px}html body .cover .mainPane .videoStreamWrapper video#videoElement{width:100%;max-height:100%}html body .cover .mainPane .videoStreamWrapper .buttonWrapper{display:grid;grid-template-columns:240px auto 240px}html body .cover .mainPane .videoStreamWrapper .buttonWrapper .login2{margin:30px 0}</style>
