@@ -11,30 +11,43 @@
 
   <link rel="stylesheet" href="./styles/manageUser.css" /></head>
   <body>
+    <div class="overlay">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+      </div>
+    </div>
     <div class="cover">
         <div class="sidePane">
           <!--<img class="dnxLogo" alt="Logo" src="/home/shivom/Downloads/logo.png" />-->
           <img class="dnxLogo" alt="Logo" src="./images/inno_facex.png" />
-          <form class="adminLoginForm" action="/test" method="POST" enctype="multipart/form-data">
+          <form name="addUserForm" class="adminLoginForm" action="/test" method="POST" enctype="multipart/form-data">
               <div class="form-group adminLogin">
                 <div class="heading">Add User Form</div>
                 
                 <label for="name">Name</label>
-                <input class="form-control" name="name" id="name" placeholder="Name" type="text" required />
+                <input autocomplete class="form-control" name="name" id="name" placeholder="Name" type="text" required />
                 
                 <label for="email">Email</label>
-                <input class="form-control" name="email" id="email" placeholder="Email" type="email" required />
+                <input autocomplete class="form-control" name="email" id="email" placeholder="Email" type="email" required />
                 
                 <label for="empId">Employee Id</label>
-                <input class="form-control" name="empId" id="empId" placeholder="Employee Id" type="text" required />
+                <input autocomplete class="form-control" name="empId" id="empId" placeholder="Employee Id" type="text" required />
           
                 <label for="phone">Phone Number</label>
-                <input class="form-control" name="phone" id="phone" placeholder="Phone Number" type="phone" pattern="[0-9]{10}" required />
+                <input autocomplete class="form-control" name="phone" id="phone" placeholder="Phone Number" type="phone" pattern="[0-9]{10}" required />
+<!-- https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a -->
+                <label for="password">Password (6+ chars, 1 alphabet, 1 number)</label>
+                <input autocomplete class="form-control" name="password" id="password" placeholder="Password" type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required />
+
+                <label for="repeatPassword">Confirm Password</label>
+                <input autocomplete class="form-control" name="repeatPassword" id="repeatPassword" placeholder="Confirm Password" type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required />
 
                 <label for="photo">Upload Photos</label>
-                <input class="form-control" name="photo" id="photo" placeholder="Upload photos" type="file" required multiple accept="image/jpg,image/png,image/jpeg,image/gif"/>
+                <input autocomplete class="form-control" name="photo" id="photo" placeholder="Upload photos" type="file" required multiple accept="image/jpg,image/png,image/jpeg,image/gif"/>
           
-                <!-- <label for="inputPassword">Password</label> <input class="form-control" id="inputPassword" placeholder="Password" type="password" /> -->
                 <button class="btn btn-primary login1" type="submit">Add User</button>
               </div>
             </form>
@@ -61,6 +74,79 @@
 
 
 </html>
+<script type="text/javascript">
+// validations
+
+
+function validateAddUser()                                    
+{ 
+    var name = document.forms["addUserForm"]["name"];               
+    var email = document.forms["addUserForm"]["email"];    
+    var phone = document.forms["addUserForm"]["phone"];  
+    var what =  document.forms["addUserForm"]["empId"];  
+    var password = document.forms["addUserForm"]["password"]; 
+    var rPassword = document.forms["addUserForm"]["repeatPassword"];  
+    var photo = document.forms["addUserForm"]["photo"];  
+   
+    if (name.value == "")                                  
+    { 
+        window.alert("Please enter your name."); 
+        name.focus(); 
+        return false; 
+    } 
+   
+    if (address.value == "")                               
+    { 
+        window.alert("Please enter your address."); 
+        name.focus(); 
+        return false; 
+    } 
+       
+    if (email.value == "")                                   
+    { 
+        window.alert("Please enter a valid e-mail address."); 
+        email.focus(); 
+        return false; 
+    } 
+   
+    if (email.value.indexOf("@", 0) < 0)                 
+    { 
+        window.alert("Please enter a valid e-mail address."); 
+        email.focus(); 
+        return false; 
+    } 
+   
+    if (email.value.indexOf(".", 0) < 0)                 
+    { 
+        window.alert("Please enter a valid e-mail address."); 
+        email.focus(); 
+        return false; 
+    } 
+   
+    if (phone.value == "")                           
+    { 
+        window.alert("Please enter your telephone number."); 
+        phone.focus(); 
+        return false; 
+    } 
+   
+    if (password.value == "")                        
+    { 
+        window.alert("Please enter your password"); 
+        password.focus(); 
+        return flase; 
+    } 
+   
+    if (what.selectedIndex < 1)                  
+    { 
+        alert("Please enter your course."); 
+        what.focus(); 
+        return false; 
+    } 
+   
+    return true; 
+}
+</script>
 
 <script>
 
@@ -326,22 +412,6 @@
            this.dataBeforeEdit.forEach((e,i)=> {
              if(e != data[i]) {
                let url = 'https://192.168.1.12:2000/edit_data'
-              //  $.ajax({
-              //     type: "POST",
-              //     url: url,
-              //     data: {"imageURL": encodeURI(dataURL)},
-              //     statusCode: {
-              //         200: function (data) {
-              //             if(confirm(data)) {
-              //                 window.location.href = "/success";
-              //             }
-              //         },
-              //         201: function (data) {
-              //             alert(data)
-              //         }
-              //     }
-              // });
-              console.log('sending body ',data);
               fetch(url, {
                 method: "POST", 
                 mode: "cors", // no-cors, cors, *same-origin
@@ -349,13 +419,18 @@
                 credentials: "same-origin", // include, *same-origin, omit
                 headers: {
                     "Content-Type": "application/json",
-                    // "Content-Type": "application/x-www-form-urlencoded",
                 },
                 redirect: "follow", // manual, *follow, error
                 referrer: "no-referrer", // no-referrer, *client
                 body: JSON.stringify(data), // body data type must match "Content-Type" header
               })
-                .then(console.log);
+              .then(response =>{
+                if( response.statusText == "OK" ) {
+                  console.log(response);
+                  updateUserLocally();
+                  return response.json()
+                }
+              }).then(console.log); 
             }
             });
            dt.row({ selected:true }).data(data);
@@ -497,5 +572,5 @@ $(document).ready(function() {
 
 </script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;outline:0}html body{background-color:#fff;color:#666;font-family:Helvetica Neue,Helvetica,Arial,sans-serif}html body .cover{display:grid;grid-template-columns:360px auto}html body .cover .sidePane .dnxLogo{width:48%;margin:15px 25px}html body .cover .sidePane .adminLogin{background-color:#fff;width:400px;padding:30px;margin:auto}html body .cover .sidePane .adminLogin .heading{font-size:24px;font-weight:500}html body .cover .sidePane .adminLogin label{color:#666;display:inline-block;font-size:14px;font-weight:700;height:20px;line-height:20px;margin:15px 0;max-width:100%;outline-color:#333;outline-style:none;outline-width:0;padding:0;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}html body .cover .sidePane .adminLogin input{border-radius:4px;border:1px solid #ccc;box-sizing:border-box;color:#666;cursor:text;display:block;margin:0;padding:6px 12px;font-size:14px;font-stretch:100%;font-weight:400;height:34px;letter-spacing:normal;line-height:20px;text-align:start;text-shadow:none;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;text-transform:none;transition-delay:0s,1s;transition-duration:.15,.15s;transition-property:border-color,box-shadow;transition-timing-function:easein-out,ease-in-out;width:100%;word-spacing:0}html body .cover .sidePane .adminLogin .login1{width:100%;display:inline-block;margin:40px 0;background-color:#337ab7;border-radius:4px;font-size:14px;color:#fff;padding:6px 12px;line-height:20px;text-align:center}html body .cover .mainPane .heading{font-size:32px;display:inline-block;width:100%;text-align:center;vertical-align:middle;height:80px;padding:20px;font-weight:700;color:#4472c4}html body .cover .mainPane .container{width:950px!important;margin-top:60px}html body .cover .mainPane .container #dnxTable_wrapper{width:950px!important}html body .cover .mainPane .container #dnxTable_wrapper *{color:#666!important}html body .cover .mainPane .container #dnxTable_wrapper #dnxTable{width:950px!important}
+
 </style>
