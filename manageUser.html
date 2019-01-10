@@ -265,15 +265,25 @@
           var adata = dt.rows({
             selected: true
           });
+          console.log('adata');
+          console.log(adata.data()[0]);
+          this.dataBeforeEdit = adata.data()[0];
+          console.log('data before edit. ',this.dataBeforeEdit);
+
 
 
           var data = "";
 
           data += "<form name='altEditor-form' role='form'>";
-
+          var disabled = '';
           for (var j in columnDefs) {
-            data += "<div class='form-group'><div class='col-sm-3 col-md-3 col-lg-3 text-right' style='padding-top:7px;'><label for='" + columnDefs[j].title + "'>" + columnDefs[j].title + ":</label></div><div class='col-sm-9 col-md-9 col-lg-9'><input type='text'  id='" + columnDefs[j].title + "' name='" + columnDefs[j].title + "' placeholder='" + columnDefs[j].title + "' style='overflow:hidden'  class='form-control  form-control-sm' value='" + adata.data()[0][j] + "'></div><div style='clear:both;'></div></div>";
-
+            //since employee Id is third in array, this will need to be changed later
+            if(j==2) {
+              disabled = 'disabled';
+            } else {
+              disabled = '';
+            }
+            data += "<div class='form-group'><div class='col-sm-3 col-md-3 col-lg-3 text-right' style='padding-top:7px;'><label for='" + columnDefs[j].title + "'>" + columnDefs[j].title + ":</label></div><div class='col-sm-9 col-md-9 col-lg-9'><input type='text' "+ disabled +"  id='" + columnDefs[j].title + "' name='" + columnDefs[j].title + "' placeholder='" + columnDefs[j].title + "' style='overflow:hidden'  class='form-control  form-control-sm' value='" + adata.data()[0][j] + "'></div><div style='clear:both;'></div></div>";
           }
           data += "</form>";
 
@@ -293,10 +303,9 @@
        _editRowData: function()
        {
          var that = this;
+         console.log('inside this._editRowData function ', this.dataBeforeEdit);
          var dt = this.s.dt;
-
          var data = [];
-
          $('form[name="altEditor-form"] input').each(function( i )
          {
             data.push( $(this).val() );
@@ -309,9 +318,49 @@
            </div>';
 
            $('#altEditor-modal .modal-body').append(message);
-
+           var updateUserLocally = function(data) {
+            $('#dnxTable').DataTable().clear().destroy();
+            createTable();
+            // this.s.dt.row({ selected:true }).data(data);
+           }
+           this.dataBeforeEdit.forEach((e,i)=> {
+             if(e != data[i]) {
+               let url = 'https://192.168.1.12:2000/edit_data'
+              //  $.ajax({
+              //     type: "POST",
+              //     url: url,
+              //     data: {"imageURL": encodeURI(dataURL)},
+              //     statusCode: {
+              //         200: function (data) {
+              //             if(confirm(data)) {
+              //                 window.location.href = "/success";
+              //             }
+              //         },
+              //         201: function (data) {
+              //             alert(data)
+              //         }
+              //     }
+              // });
+              console.log('sending body ',data);
+              fetch(url, {
+                method: "POST", 
+                mode: "cors", // no-cors, cors, *same-origin
+                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: "same-origin", // include, *same-origin, omit
+                headers: {
+                    "Content-Type": "application/json",
+                    // "Content-Type": "application/x-www-form-urlencoded",
+                },
+                redirect: "follow", // manual, *follow, error
+                referrer: "no-referrer", // no-referrer, *client
+                body: JSON.stringify(data), // body data type must match "Content-Type" header
+              })
+                .then(console.log);
+            }
+            });
            dt.row({ selected:true }).data(data);
-       },
+              console.log('updated data', data);
+          },
 
 
 
@@ -402,26 +451,28 @@
    return altEditor;
 }));</script>
 <script>
-$(document).ready(function() {
-  fetch('https://192.168.1.12:2000/fetch_data',{
-    mode: 'cors',
-    headers: {
-      'Access-Control-Allow-Origin':'*'
-    }}).then(data=>data.json()).then((data) => {
-    console.log('data fetched from local server',data);
-    var columnDefs = [{
-      title: "Name"
-    }, {
-      title: "Email"
-    }, {
-      title: "Employee Id"
-    }, {
-      title: "Phone Number"
-    }];
+function createTable() {
+    fetch('https://192.168.1.12:2000/fetch_data',{
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin':'*'
+        }
+    }).then(data=>data.json())
+      .then((data) => {
+        console.log('data fetched from local server',data);
+        var columnDefs = [{
+          title: "Name"
+        }, {
+          title: "Email"
+        }, {
+          title: "Employee Id"
+        }, {
+          title: "Phone Number"
+        }];
 
-    var myTable;
+        var myTable;
 
-    myTable = $('#dnxTable').DataTable({
+        myTable = $('#dnxTable').DataTable({
       "sPaginationType": "full_numbers",
       data: data,
       columns: columnDefs,
@@ -430,20 +481,21 @@ $(document).ready(function() {
             responsive: true,
             altEditor: true,     // Enable altEditor
             buttons: [
-            {
-              extend: 'selected', // Bind to Selected row
-              text: 'Edit',
-              name: 'edit'        // do not change name
-            },
-            ]
-      });
-  })
+              {
+                extend: 'selected', // Bind to Selected row
+                text: 'Edit',
+                name: 'edit'        // do not change name
+              },
+              ]
+    });
+      })
 
-
-
+  }
+$(document).ready(function() {
+  createTable();
 });
 
 </script>
 <style>
-
+*{box-sizing:border-box;margin:0;padding:0;outline:0}html body{background-color:#fff;color:#666;font-family:Helvetica Neue,Helvetica,Arial,sans-serif}html body .cover{display:grid;grid-template-columns:360px auto}html body .cover .sidePane .dnxLogo{width:48%;margin:15px 25px}html body .cover .sidePane .adminLogin{background-color:#fff;width:400px;padding:30px;margin:auto}html body .cover .sidePane .adminLogin .heading{font-size:24px;font-weight:500}html body .cover .sidePane .adminLogin label{color:#666;display:inline-block;font-size:14px;font-weight:700;height:20px;line-height:20px;margin:15px 0;max-width:100%;outline-color:#333;outline-style:none;outline-width:0;padding:0;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}html body .cover .sidePane .adminLogin input{border-radius:4px;border:1px solid #ccc;box-sizing:border-box;color:#666;cursor:text;display:block;margin:0;padding:6px 12px;font-size:14px;font-stretch:100%;font-weight:400;height:34px;letter-spacing:normal;line-height:20px;text-align:start;text-shadow:none;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;text-transform:none;transition-delay:0s,1s;transition-duration:.15,.15s;transition-property:border-color,box-shadow;transition-timing-function:easein-out,ease-in-out;width:100%;word-spacing:0}html body .cover .sidePane .adminLogin .login1{width:100%;display:inline-block;margin:40px 0;background-color:#337ab7;border-radius:4px;font-size:14px;color:#fff;padding:6px 12px;line-height:20px;text-align:center}html body .cover .mainPane .heading{font-size:32px;display:inline-block;width:100%;text-align:center;vertical-align:middle;height:80px;padding:20px;font-weight:700;color:#4472c4}html body .cover .mainPane .container{width:950px!important;margin-top:60px}html body .cover .mainPane .container #dnxTable_wrapper{width:950px!important}html body .cover .mainPane .container #dnxTable_wrapper *{color:#666!important}html body .cover .mainPane .container #dnxTable_wrapper #dnxTable{width:950px!important}
 </style>

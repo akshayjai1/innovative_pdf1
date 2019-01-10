@@ -1,3 +1,5 @@
+import { abc } from './data3';
+// console.log('this is abce ',abc);
 // import data from './data';
 // window.onload = function() {
 //   alert("hello!");
