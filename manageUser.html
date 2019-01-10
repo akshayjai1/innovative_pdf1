@@ -48,7 +48,7 @@
                 <label for="photo">Upload Photos</label>
                 <input autocomplete class="form-control" name="photo" id="photo" placeholder="Upload photos" type="file" required multiple accept="image/jpg,image/png,image/jpeg,image/gif"/>
           
-                <button class="btn btn-primary login1" type="submit">Add User</button>
+                <button class="btn btn-primary login1" type="submit" disabled>Add User</button>
               </div>
             </form>
         </div>
@@ -83,7 +83,7 @@ function validateAddUser()
     var name = document.forms["addUserForm"]["name"];               
     var email = document.forms["addUserForm"]["email"];    
     var phone = document.forms["addUserForm"]["phone"];  
-    var what =  document.forms["addUserForm"]["empId"];  
+    var empId =  document.forms["addUserForm"]["empId"];  
     var password = document.forms["addUserForm"]["password"]; 
     var rPassword = document.forms["addUserForm"]["repeatPassword"];  
     var photo = document.forms["addUserForm"]["photo"];  
@@ -571,6 +571,3 @@ $(document).ready(function() {
 });
 
 </script>
-<style>
-
-</style>

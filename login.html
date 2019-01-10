@@ -9,7 +9,6 @@
         rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript">
     var stream, imageCapture, canvas, context;
     function getMediaStream(){
@@ -30,7 +29,8 @@
       console.error('error:', error);
     }
 
-    function takePhoto() {
+    function takePhotologin() {
+        $(".overlay").show();
         context.drawImage(stream, 0, 0, canvas.width, canvas.height);
         var dataURL = canvas.toDataURL();
         console.log(encodeURI(dataURL));
@@ -41,21 +41,7 @@
             statusCode: {
                 200: function (data) {
                     if(confirm(data)) {
-                        window.location.href = "/success";
-                    }
-                },
-                201: function (data) {
-                    alert(data)
-                }
-            }
-        });
-        $.ajax({
-            type: "GET",
-            url: "https://192.168.1.12:2000/fetch_data",
-            statusCode: {
-                200: function (data) {
-                    if(confirm(data)) {
-                        window.location.href = "/success";
+                        window.location.href = "/face_login";
                     }
                 },
                 201: function (data) {
@@ -65,43 +51,69 @@
         });
         context.clearRect(0, 0, canvas.width, canvas.height);
     }
-    function toggleManualLogin() {
-      $(".manualLogin").toggle();
-      let btn = $(".manualLoginButton"); 
-      // if(btn.text()==).text("")
+
+    function takePhotologout() {
+        $(".overlay").show();
+        context.drawImage(stream, 0, 0, canvas.width, canvas.height);
+        var dataURL = canvas.toDataURL();
+        console.log(encodeURI(dataURL));
+        $.ajax({
+            type: "POST",
+            url: "/recognize",
+            data: {"imageURL": encodeURI(dataURL)},
+            statusCode: {
+                200: function (data) {
+                    $('.overlay').hide();
+                    if(confirm(data)) {
+                        window.location.href = "/face_logout";
+                    }
+                },
+                201: function (data) {
+                    $('.overlay').hide();
+                    alert(data)
+                }
+            }
+        });
+        context.clearRect(0, 0, canvas.width, canvas.height);
     }
+
   </script>
 </head>
 <body onload="getMediaStream()">
+        <div class="overlay">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div><div></div><div></div><div></div><div></div>
+      </div>
+    </div>
   <div class="cover">
     <div class="sidePane">
       <!--<img class="dnxLogo" alt="Logo" src="/home/shivom/Downloads/logo.png" />-->
       <img class="dnxLogo" alt="Logo" src="./images/inno_facex.png" />
       <!--<button class="btn btn-primary login3" onclick="toggleManualLogin()">Login Manually</button>-->
-      <form action="" method="POST">
+      <form action="/email_login" method="POST">
         <div class="form-group manualLogin">
           <label for="inputUsername">Username</label>
-          <input class="form-control" id="inputUsername" placeholder="Username" type="email" />
-          <label for="inputPassword">Password</label> <input class="form-control" id="inputPassword" placeholder="Password" type="password" />
-          <button class="btn btn-primary login1" >Login</button>
-          <button class="btn btn-primary login1" type="submit">Log Out</button>
-        </div>
-      </form>
-        
-      
+          <input class="form-control" id="inputUsername" name="inputUsername" placeholder="Username" type="email" />
+          <label for="inputPassword">Password</label> <input class="form-control" id="inputPassword" placeholder="Password" name="inputPassword" type="password" />
+          <button class="btn btn-primary login1" type="submit" value="Login">Login</button>
+          <button class="btn btn-primary login1" type="submit" value="Logout" formaction="/email_logout">Log Out</button>
+          </div>
+        </form>
+      <canvas height=180 id="canvas" width=240></canvas>
     </div>
     <div class="mainPane">
       <div class="heading">Welcome to DNX FACIAL ATTENDANCE SYSTEM</div>
       <div class="videoStreamWrapper">
-        <canvas height="0" id="canvas" width=240></canvas>
         <video autoplay="autoplay" id="videoElement"></video>
         <div class="buttonWrapper">
-          <button class="btn btn-primary login2" id="capture" onclick="takePhoto()">PUNCH IN using Face</button>
+          <button class="btn btn-primary login2" id="capturein" onclick="takePhotologin()">PUNCH IN using Face</button>
           <div></div>
-          <button class="btn btn-primary login2" id="capture" onclick="takePhoto()">PUNCH Out using Face</button>
+          <button class="btn btn-primary login2" id="captureout" onclick="takePhotologout()">PUNCH Out using Face</button>
         </div>
       </div>  
     </div>
   </div>
 </body>
-</html>
